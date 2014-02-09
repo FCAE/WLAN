@@ -1,4 +1,5 @@
 function vecTx = ParameterMCS(vecTx);
+% only include MCS 0 ~ 32 for EQM
 if strcmp(vecTx.CH_bandWidth,'20MHz')
         vecTx.Nsd           = 52;
         vecTx.Nsp           = 4;
@@ -40,34 +41,34 @@ switch (mod(vecTx.MCS,8))
         vecTx.Nbpsc         = 6;
     case 7
         vecTx.modulation    = '64QAM';
-        vecTx.codeRate      = '5/6';		
+        vecTx.codeRate      = '5/6';
         vecTx.Nbpsc         = 6;
     otherwise disp('there is wrong setting');
 end
 
 if (vecTx.MCS>=0 && vecTx.MCS<=7)
-        vecTx.Nss           = 1;
-        vecTx.Nes           = 1;
+    vecTx.Nss           = 1;
+    vecTx.Nes           = 1;
 elseif (vecTx.MCS>=8 && vecTx.MCS<=15)
-        vecTx.Nss           = 2;
-        vecTx.Nes           = 1;
+    vecTx.Nss           = 2;
+    vecTx.Nes           = 1;
 elseif (vecTx.MCS>=16 && vecTx.MCS<=23)
-        vecTx.Nss           = 3;
-        vecTx.Nes           = 1;
+    vecTx.Nss           = 3;
+    vecTx.Nes           = 1;
 elseif (vecTx.MCS>=24 && vecTx.MCS<=31)
-        vecTx.Nss           = 4;
-        vecTx.Nes           = 1;
+    vecTx.Nss           = 4;
+    vecTx.Nes           = 1;
 elseif (vecTx.MCS==32)
-        vecTx.Nss           = 1;
-        vecTx.Nes           = 1;
-        vecTx.modulation    = 'BPSK';
-        vecTx.codeRate      = '1/2';
-        vecTx.Nbpsc         = 1;
-        vecTx.Nsd           = 48;
-        vecTx.Nsp           = 4;
+    vecTx.Nss           = 1;
+    vecTx.Nes           = 1;
+    vecTx.modulation    = 'BPSK';
+    vecTx.codeRate      = '1/2';
+    vecTx.Nbpsc         = 1;
+    vecTx.Nsd           = 48;
+    vecTx.Nsp           = 4;
 end
-    vecTx.Ncbps         = vecTx.Nbpsc * vecTx.Nsd * vecTx.Nss;
-    vecTx.Ndbps         = vecTx.Ncbps * str2num(vecTx.codeRate);
+vecTx.Ncbps         = vecTx.Nbpsc * vecTx.Nsd * vecTx.Nss;
+vecTx.Ndbps         = vecTx.Ncbps * str2num(vecTx.codeRate);
 
 
 
