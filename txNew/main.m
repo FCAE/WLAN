@@ -1,3 +1,9 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% description: This function is main function of 802.11n 
+% author:   
+% date:     2014 02 19
+% call function list:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 vecTx.format            = 'HT_MF';
 vecTx.non_HT_modulation = 'OFDM';
 vecTx.L_length          = 4095;
@@ -15,8 +21,10 @@ vecTx.Ntx               = 1;
 vecTx.expension_MAT     = 'COMPRESSED_SV';
 vecTx.expension_MAT_type= 0;            % 1:expension_MAT is present 0:not present
 
+% system configuration
 vecTx = ParameterMCS(vecTx);
-
+% generate TX bit steam
+% generate TX wave form
 
 
 
